@@ -1,0 +1,13 @@
+#navitemr{
+        text-align: right;
+}
+.brand-logo{
+        color: white;
+        text-decoration: none;
+}
+.fa{
+        font-size: 36px;
+        margin-left: 20px;
+        margin-top: 10px;
+        color: #0abde3;
+}
