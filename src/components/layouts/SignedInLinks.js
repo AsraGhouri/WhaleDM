@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../store/actions/authActions'
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -10,10 +9,13 @@ const styles = theme => ({
         textDecoration: 'none',
         margin : '10px',
         cursor: 'pointer',
+        fontSize: '14px',
     },
     list: {
         display: 'inline-flex',
-        listStyleType: 'none'
+        listStyleType: 'none',
+        marginLeft: '18px',
+        marginTop: '13px'
     }
   });
   
@@ -21,8 +23,8 @@ const SignedInLinks = (props) => {
     const { classes } = props;
   return (
     <div>
-      <ul className="right" className={classes.list}>
-      <li><a onClick={props.signOut} className={classes.links}>Log Out</a></li>
+      <ul className={classes.list}>
+      <li onClick={props.signOut} className={classes.links}>Log Out</li>
       </ul>
     </div>
   )

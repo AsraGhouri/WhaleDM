@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-// import { firestoreConnect } from 'react-redux-firebase'
-// import { compose } from 'redux'
 import SignedInLinks from '../layouts/SignedInLinks'
 import SignedOutLinks from '../layouts/SignedOutLinks'
 import fire from '../../config/Fire';
 import PropTypes from 'prop-types';
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 // creates a beautiful scrollbar
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
-// import DashboardPage from './DashboardPage.js'
 const styles = theme => ({
   
 })
-class Dashboard extends Component {
+class Logout extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -42,14 +39,12 @@ class Dashboard extends Component {
     });
   }
   render() {
-    const { classes, ...rest} = this.props;
     const { auth, profile } = this.props;
     // console.log(auth);
     const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
-    if (!auth.uid) return <Redirect to='/signin' />
+    if (!auth.uid) return <Redirect to='/' />
     return (
-      <div>
-        {links}
+      <div> {links}
       </div>
     );
 
@@ -65,9 +60,9 @@ const mapStateToProps = (state) => {
 
   }
 }
-Dashboard.propTypes = {
+Logout.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
 
-export default connect(mapStateToProps)(withStyles(styles)(Dashboard));
+export default connect(mapStateToProps)(withStyles(styles)(Logout));

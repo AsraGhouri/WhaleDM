@@ -3,7 +3,6 @@ import '../auth/css/Login.css'
 import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -13,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+//that can connect with our redux store
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
@@ -89,10 +89,6 @@ class SignIn extends Component {
     user: {},
     rememberMe: false,
   }
-  componentDidMount() {
-    this.authListener();
-    // <Redirect to='home' />
-  }
   authListener() {
     fire.auth().onAuthStateChanged((user) => {
       console.log(user);
@@ -122,6 +118,7 @@ class SignIn extends Component {
     this.props.signIn(this.state)
   }
   componentDidMount() {
+    this.authListener();
     const rememberMe = localStorage.getItem('rememberMe') === 'true';
     const user = rememberMe ? localStorage.getItem('user') : '';
     this.setState({ user, rememberMe });
@@ -130,14 +127,8 @@ class SignIn extends Component {
 
     const { classes } = this.props;
     const { authError, auth, profile } = this.props;
-    var txt;
-    if (this.state.isChecked) {
-      txt = 'checked'
-    } else {
-      txt = 'unchecked'
-    }
     console.log(profile)
-    if (auth.uid) return  <Redirect from="/" to="/admin/dashboard" />
+    if (auth.uid) return  <Redirect to="/admin/dashboard" />
     return (
       <div className={classes.root} id="login">
         <center>
@@ -173,7 +164,6 @@ class SignIn extends Component {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  type="submit"
                   className={classes.submit}
                 >
                   LOGIN
@@ -198,10 +188,12 @@ const mapStateToProps = (state) => {
     profile: state.firebase.profile
   }
 }
-
+//this is a function inside this taken dispatch method, what ever the property we want to add props
 const mapDispatchToProps = (dispatch) => {
-  return {
-    signIn: (creds) => dispatch(signIn(creds))
+  //whatever the property we want to add to the props we add to this object
+  return { // return an object
+    //add a method of signIn, when we say props.signIn in the project in the component then its gonna call this function.
+    signIn: (creds) => dispatch(signIn(creds)) //its gonna dispatch signIn passing 
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(SignIn));

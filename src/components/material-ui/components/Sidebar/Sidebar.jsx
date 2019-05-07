@@ -10,6 +10,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
+import Logout from '../../../auth/Logout';
 // core components
 import AdminNavbarLinks from "../../components/Navbars/AdminNavbarLinks.jsx";
 import RTLNavbarLinks from "../../components/Navbars/RTLNavbarLinks.jsx";
@@ -21,7 +22,7 @@ const Sidebar = ({ ...props }) => {
   function activeRoute(routeName) {
     return props.location.pathname.indexOf(routeName) > -1 ? true : false;
   }
-  const { classes, color, logo, image, logoText, routes } = props;
+  const { classes, color, logo, image, routes } = props;
   var links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
@@ -74,8 +75,10 @@ const Sidebar = ({ ...props }) => {
               />
             </ListItem>
           </NavLink>
+            
         );
       })}
+      <Logout />
     </List>
   );
   var brand = (
@@ -89,7 +92,7 @@ const Sidebar = ({ ...props }) => {
         <div className={classes.logoImage}>
           <img src={logo} alt="logo" className={classes.img} />
         </div>
-        {logoText}
+          Whale DM
       </a>
     </div>
   );

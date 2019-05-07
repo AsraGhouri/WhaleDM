@@ -14,13 +14,13 @@ const styles = theme => ({
     }
   });
   
-const SignedOutLinks = (props) => {
-    const { classes } = props;
+const SignedOutLinks = () => {
+    const { classes } = this.props;
     return (
         <div>
-            <ul className="right" className={classes.list}>
+            <ul className={classes.list}>
                 <li><NavLink className={classes.links} to='/signup'>Signup</NavLink></li>
-                <li><NavLink className={classes.links} to='/signin'>Login</NavLink></li>
+                <li><NavLink className={classes.links} to='/'>Login</NavLink></li>
             </ul>
         </div>
     )

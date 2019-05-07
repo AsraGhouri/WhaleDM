@@ -15,7 +15,6 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
 import Navigation from '../Navigation/Navigation';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 const styles = theme => ({
   main: {
@@ -37,10 +36,6 @@ const styles = theme => ({
     boxShadow: "none",
     overflow: "hidden",
     padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-  },
-  avatar: {
-    margin: theme.spacing.unit,
-    backgroundColor: ' #0abde3',
   },
   avatar: {
     margin: theme.spacing.unit,
@@ -104,7 +99,7 @@ class SignUp extends Component {
     const { auth, authError, classes } = this.props;
     const { isChecked } = this.state;
     const submitDisabled = isChecked === false;
-    if (auth.uid) return  <Redirect from="/" to="/admin/dashboard" />
+    if (auth.uid) return  <Redirect to="/admin/dashboard" />
     return (
       <div>
         <Navigation />
@@ -160,7 +155,6 @@ class SignUp extends Component {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    type="submit"
                     className={classes.submit}
                     disabled={submitDisabled}
                   >

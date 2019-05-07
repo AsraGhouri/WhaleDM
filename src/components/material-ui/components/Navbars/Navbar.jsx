@@ -5,17 +5,14 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
-// @material-ui/icons
-import Menu from "@material-ui/icons/Menu";
 // core components
 import AdminNavbarLinks from "./AdminNavbarLinks.jsx";
 import RTLNavbarLinks from "./RTLNavbarLinks.jsx";
 import Button from "../../components/CustomButtons/Button.jsx";
 
 import headerStyle from "../../assets/jss/material-dashboard-react/components/headerStyle.jsx";
-import Dashboard from '../../../Dashboard/Dashboard.js'
+import  Logout from '../../../auth/Logout.js'
 function Header({ ...props }) {
   function makeBrand() {
     var name;
@@ -43,16 +40,7 @@ function Header({ ...props }) {
         <Hidden smDown implementation="css">
           {props.rtlActive ? <RTLNavbarLinks /> : <AdminNavbarLinks />}
         </Hidden>
-        {/* <Hidden mdUp implementation="css">
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={props.handleDrawerToggle}
-          >
-            <Menu />
-          </IconButton>
-        </Hidden> */}
-       <Dashboard />
+       <Logout />
       </Toolbar>
     </AppBar>
   );
