@@ -25,7 +25,7 @@ class Navigation extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Link to='/signin'>
+        <Link to='/'>
           <i className="fa">&#xf137;</i>
         </Link>
       </div >

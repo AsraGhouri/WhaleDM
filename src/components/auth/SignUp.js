@@ -159,7 +159,7 @@ class SignUp extends Component {
                     disabled={submitDisabled}
                   >
                     Sign Up
-          </Button>
+                </Button>
 
                 </form>
               </Paper>
